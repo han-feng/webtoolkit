@@ -1,11 +1,12 @@
 <?xml version="1.0"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>net.coding.xcom</groupId>
 	<artifactId>webtoolkit</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<packaging>war</packaging>
 
 	<name>Web Toolkit</name>
@@ -36,6 +37,11 @@
 			<id>xcom</id>
 			<name>xcom</name>
 			<email>xcom_org@163.com</email>
+		</developer>
+		<developer>
+			<id>han_feng</id>
+			<name>han_feng</name>
+			<email>han_feng@foxmail.com</email>
 		</developer>
 	</developers>
 
