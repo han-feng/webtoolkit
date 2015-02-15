@@ -89,12 +89,6 @@
 			<version>${slf4j.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>net.sourceforge.pjl-comp-filter</groupId>
-			<artifactId>pjl-comp-filter</artifactId>
-			<version>1.7</version>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-jcl</artifactId>
 			<version>${log4j2.version}</version>
@@ -141,6 +135,7 @@
 							<value>${project.build.sourceEncoding}</value>
 						</systemProperty>
 					</systemProperties>
+					<useTestScope>true</useTestScope>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -150,7 +145,7 @@
 				<configuration>
 					<path>/</path>
 					<uriEncoding>${project.build.sourceEncoding}</uriEncoding>
-					<useTestClasspath>false</useTestClasspath>
+					<useTestClasspath>true</useTestClasspath>
 				</configuration>
 			</plugin>
 			<plugin>

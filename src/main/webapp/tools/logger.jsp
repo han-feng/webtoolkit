@@ -67,7 +67,7 @@ th.caption {
 		<%
 		    if (log4j2) {
 		%><tr>
-			<td><jsp:include page="logger-log4j2.jsp"></jsp:include></td>
+			<td align="center"><jsp:include page="logger-log4j2.jsp"></jsp:include></td>
 		</tr>
 		<%
 		    }
@@ -78,7 +78,7 @@ th.caption {
 		<%
 		    if (slf4j) {
 		%><tr>
-			<td><jsp:include page="logger-slf4j.jsp"></jsp:include></td>
+			<td align="center"><jsp:include page="logger-slf4j.jsp"></jsp:include></td>
 		</tr>
 		<%
 		    }
@@ -89,7 +89,7 @@ th.caption {
 		<%
 		    if (acl) {
 		%><tr>
-			<td><jsp:include page="logger-acl.jsp"></jsp:include></td>
+			<td align="center"><jsp:include page="logger-acl.jsp"></jsp:include></td>
 		</tr>
 		<%
 		    }
@@ -100,7 +100,7 @@ th.caption {
 		<%
 		    if (jul) {
 		%><tr>
-			<td><jsp:include page="logger-jul.jsp"></jsp:include></td>
+			<td align="center"><jsp:include page="logger-jul.jsp"></jsp:include></td>
 		</tr>
 		<%
 		    }
