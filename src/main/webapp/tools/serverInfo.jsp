@@ -1,7 +1,18 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%@page import="java.util.*"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@page import="java.util.*" language="java"
+	contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%!private static String toHTML(Object obj) {
+        if (obj == null)
+            return "";
+        String value = obj.toString();
+        if (value.length() > 128) {
+            value = "<textarea rows=\"10\" cols=\"80\">" + value
+                    + "</textarea>";
+        } else {
+            value = "<xmp>" + value + "</xmp>";
+        }
+        return value;
+    }%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -72,7 +83,7 @@ th.caption {
 		%>
 		<tr>
 			<th><%=key%>:</th>
-			<td><%=prop.get(key)%></td>
+			<td><%=toHTML(prop.get(key))%></td>
 		</tr>
 		<%
 		    }
@@ -87,7 +98,7 @@ th.caption {
 		%>
 		<tr>
 			<th><%=key%>:</th>
-			<td><%=env.get(key)%></td>
+			<td><%=toHTML(env.get(key))%></td>
 		</tr>
 		<%
 		    }
@@ -102,7 +113,7 @@ th.caption {
 		%>
 		<tr>
 			<th><%=key%>:</th>
-			<td><%=application.getAttribute(key)%></td>
+			<td><%=toHTML(application.getAttribute(key))%></td>
 		</tr>
 		<%
 		    }
