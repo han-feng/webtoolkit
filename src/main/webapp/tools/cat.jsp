@@ -100,5 +100,7 @@ td {
 	<%
 	    }
 	%>
+	说明：CAT-Core 标记 CAT 工具类所在的类加载器；JSP.class 标记 JSP
+	类定义所在的类加载器；JSP.serviceThread 标记 JSP 服务线程所使用的上下文类加载器。
 </body>
 </html>
