@@ -74,6 +74,11 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
+			<groupId>net.coding.xcom</groupId>
+			<artifactId>cat-core</artifactId>
+			<version>0.0.1</version>
+		</dependency>
+		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-api</artifactId>
 			<version>${log4j2.version}</version>

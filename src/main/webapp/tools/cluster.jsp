@@ -130,7 +130,7 @@ li {
 </script>
 </head>
 <body>
-	<h2>集群验证工具</h2>
+	<h2>集群会话验证工具</h2>
 	<div>
 		<input id="loopbox" type="checkbox" checked><label
 			for="loopbox">循环检测（间隔 1 秒）</label>
@@ -152,8 +152,8 @@ li {
 		<label>检测总次数：</label><span id="count"></span> <label
 			style="margin-left: 30px">最后检测时间：</label><span id="lasttime"></span>
 	</div>
-	<div style="font-size: 0.8em;">* 注：服务节点、会话内容验证、Session
-		Id 内容无变化时不再重复显示。</div>
+	<div style="font-size: 0.8em;">* 注：服务节点、会话内容验证、Session Id
+		内容无变化时不再重复显示。</div>
 	<script src="jquery.min.js"></script>
 	<script type="text/javascript">
 		function log(time, server, sessionStr, validateStr) {
