@@ -42,6 +42,7 @@ li {
 			    }
 			%>
 			<li><a href="cluster.jsp">集群会话验证工具</a></li>
+			<li><a href="<%=request.getContextPath()%>/filterChainDetector">过滤器链探查工具</a></li>
 		</ul>
 	</div>
 </body>
