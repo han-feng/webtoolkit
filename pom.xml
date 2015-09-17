@@ -53,6 +53,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jdk.version>1.6</jdk.version>
+		<cat.version>1.0</cat.version>
 		<tomcat.version>2.2</tomcat.version>
 		<jetty.version>9.2.6.v20141205</jetty.version>
 		<slf4j.version>1.7.12</slf4j.version>
@@ -76,7 +77,13 @@
 		<dependency>
 			<groupId>net.coding.xcom</groupId>
 			<artifactId>cat-core</artifactId>
-			<version>0.0.1</version>
+			<version>${cat.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>net.coding.xcom</groupId>
+			<artifactId>cat-web</artifactId>
+			<version>${cat.version}</version>
+			<type>war</type>
 		</dependency>
 		<dependency>
 			<groupId>log4j</groupId>
@@ -125,16 +132,6 @@
 	<build>
 		<defaultGoal>install</defaultGoal>
 		<plugins>
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.2</version>
-				<configuration>
-					<verbose>true</verbose>
-					<fork>true</fork>
-					<target>${jdk.version}</target>
-					<source>${jdk.version}</source>
-				</configuration>
-			</plugin>
 			<plugin>
 				<groupId>org.eclipse.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>

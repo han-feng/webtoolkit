@@ -31,12 +31,12 @@ li {
 			<%
 			    if (checkClass("org.xcom.cat.core.ClassloaderAnalysisTool")) {
 			%>
-			<li><a href="cat.jsp">类加载器分析工具</a> | <a href="classLoader.jsp">简化版</a></li>
+			<li><a href="../cat/cat_index.jsp">类加载器分析工具</a> | <a href="classLoader.jsp">简化版</a></li>
 			<%
 			    } else {
 			%>
 			<li><a href="classLoader.jsp">类加载器分析工具简化版</a> （完整版本需将 <a
-				href="http://repo1.maven.org/maven2/net/coding/xcom/cat-core/0.0.1/cat-core-0.0.1.jar">cat-core-0.0.1.jar</a>
+				href="http://repo1.maven.org/maven2/net/coding/xcom/cat-core/1.0/cat-core-1.0.jar">cat-core-1.0.jar</a>
 				加入到类路径后可用）</li>
 			<%
 			    }
