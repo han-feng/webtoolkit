@@ -5,7 +5,7 @@
 
 	<groupId>net.coding.xcom</groupId>
 	<artifactId>webtoolkit</artifactId>
-	<version>1.0</version>
+	<version>1.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
 	<name>Web Toolkit</name>
