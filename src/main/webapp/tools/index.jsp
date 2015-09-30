@@ -1,3 +1,4 @@
+<%@page import="java.util.Properties"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%!public static boolean checkClass(String className) {
@@ -18,8 +19,9 @@ li {
 </head>
 <body>
 	<div>
-		<strong>Web应用调试工具集</strong> | <a href="http://webtoolkit.coding.io">演示</a>
-		| <a href="https://coding.net/u/xcom/p/webtoolkit/git">源码</a> | <a
+		<strong>Web应用调试工具集</strong> ${project.version} | <a
+			href="http://webtoolkit.coding.io">演示</a> | <a
+			href="https://coding.net/u/xcom/p/webtoolkit/git">源码</a> | <a
 			href="https://coding.net/u/xcom/p/webtoolkit/topic/all">讨论</a>
 	</div>
 	<hr>
@@ -31,7 +33,8 @@ li {
 			<%
 			    if (checkClass("org.xcom.cat.core.ClassloaderAnalysisTool")) {
 			%>
-			<li><a href="../cat/cat_index.jsp">类加载器分析工具</a> | <a href="classLoader.jsp">简化版</a></li>
+			<li><a href="../cat/cat_index.jsp">类加载器分析工具</a> | <a
+				href="classLoader.jsp">简化版</a></li>
 			<%
 			    } else {
 			%>
