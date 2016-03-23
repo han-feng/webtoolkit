@@ -29,6 +29,7 @@ li {
 		<ul>
 			<li><a href="serverInfo.jsp">应用运行环境信息</a></li>
 			<li><a href="logger.jsp">日志工具配置信息</a></li>
+			<li><a href="jndi.jsp">JNDI资源查看</a></li>
 			<li><a href="javaResource.jsp">Java资源查找工具</a></li>
 			<%
 			    if (checkClass("org.xcom.cat.core.ClassloaderAnalysisTool")) {

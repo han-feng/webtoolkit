@@ -6,10 +6,10 @@
             return "";
         String value = obj.toString();
         if (value.length() > 128) {
-            value = "<textarea rows=\"10\" cols=\"80\">" + value
+            value = "<textarea readonly rows=\"10\" cols=\"80\">" + value
                     + "</textarea>";
         } else {
-            value = "<xmp>" + value + "</xmp>";
+            value = "<pre>" + value + "</pre>";
         }
         return value;
     }%>
@@ -93,7 +93,8 @@ th.caption {
 		</tr>
 		<%
 		    Map<String, String> env = System.getenv();
-		    for (Iterator<String> itr = env.keySet().iterator(); itr.hasNext();) {
+		    for (Iterator<String> itr = env.keySet().iterator(); itr
+		            .hasNext();) {
 		        key = itr.next().toString();
 		%>
 		<tr>
