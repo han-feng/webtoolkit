@@ -1,28 +1,27 @@
 <%@page import="java.util.*,javax.naming.*" language="java"
 	contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-    //
-    response.setHeader("Pragma", "no-cache");
-    response.setHeader("Cache-Control", "no-cache");
-    response.setDateHeader("Expires", 0);
+	//
+	response.setHeader("Pragma", "no-cache");
+	response.setHeader("Cache-Control", "no-cache");
+	response.setDateHeader("Expires", 0);
 
-    String contextPath = request.getContextPath();
+	String contextPath = request.getContextPath();
 
-    InitialContext initCtx = new InitialContext();
-    Hashtable env = initCtx.getEnvironment();
+	InitialContext initCtx = new InitialContext();
+	Hashtable env = initCtx.getEnvironment();
 %>
 <%!private static String toHTML(Object obj) {
-        if (obj == null)
-            return "";
-        String value = obj.toString();
-        if (value.length() > 128) {
-            value = "<textarea readonly rows=\"10\" cols=\"80\">" + value
-                    + "</textarea>";
-        } else {
-            value = "<pre>" + value + "</pre>";
-        }
-        return value;
-    }%>
+		if (obj == null)
+			return "";
+		String value = obj.toString();
+		if (value.length() > 128) {
+			value = "<textarea readonly rows=\"10\" cols=\"80\">" + value + "</textarea>";
+		} else {
+			value = "<pre>" + value + "</pre>";
+		}
+		return value;
+	}%>
 <html>
 <head>
 <style type="text/css">
@@ -52,20 +51,19 @@ th.caption {
 	</p>
 	<table>
 		<tr>
-			<th class="caption">JNDI Environment</th>
+			<th class="caption" colspan="2">JNDI Environment</th>
 		</tr>
 		<%
-		    String key;
-		    for (Iterator<String> itr = env.keySet().iterator(); itr
-		            .hasNext();) {
-		        key = itr.next().toString();
+			String key;
+			for (Iterator<String> itr = env.keySet().iterator(); itr.hasNext();) {
+				key = itr.next().toString();
 		%>
 		<tr>
 			<th><%=key%>:</th>
 			<td><%=toHTML(env.get(key))%></td>
 		</tr>
 		<%
-		    }
+			}
 		%>
 	</table>
 </body>
