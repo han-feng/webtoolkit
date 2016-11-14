@@ -46,6 +46,7 @@ li {
 			%>
 			<li><a href="session.jsp">会话信息查看工具</a></li>
 			<li><a href="clusterSessionCheck.jsp">集群会话验证工具</a></li>
+			<li><a href="cluster.jsp">集群配置检测工具</a></li>
 			<li><a href="<%=request.getContextPath()%>/filterChainDetector">过滤器链探查工具</a></li>
 		</ul>
 	</div>

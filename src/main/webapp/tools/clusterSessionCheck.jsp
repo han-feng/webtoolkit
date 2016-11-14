@@ -19,6 +19,8 @@
 	String sessionId = session.getId();
 	String server = serverIp + ":" + serverPort;
 	String cookie = request.getHeader("Cookie");
+	if (cookie == null)
+		cookie = "";
 
 	long newTime = System.currentTimeMillis();
 
@@ -26,10 +28,18 @@
 	int newNum = new Random().nextInt();
 	session.setAttribute(sessionkey1, new Integer(newNum));
 
-	TestObject oldTestObj = (TestObject) session.getAttribute(sessionkey2);
+	TestObject oldTestObj = null, oldTestObj2 = null;
+
+	try {
+		oldTestObj = (TestObject) session.getAttribute(sessionkey2);
+	} catch (Exception e) {
+	}
 	session.setAttribute(sessionkey2, new TestObject(newNum));
 
-	TestObject oldTestObj2 = (TestObject) session.getAttribute(sessionkey3);
+	try {
+		oldTestObj2 = (TestObject) session.getAttribute(sessionkey3);
+	} catch (Exception e) {
+	}
 	session.setAttribute(sessionkey3, new TestObject2(newNum));
 
 	long time = session.getCreationTime();
@@ -168,8 +178,8 @@ li {
 	var server = "<%=server%>";
 	var sessionId = "<%=sessionId%>";
 	var requestCookie = "<%=cookie%>";
-	var random =<%=newNum%>;
-	var stime =<%=newTime%>;
+	var random = <%=newNum%>;
+	var stime = <%=newTime%>;
 	var validateMsg = "";
 	var ajaxTimeOut = 1000;
 	var loop = true;
@@ -192,7 +202,8 @@ li {
 				<th>会话内容验证 *</th>
 				<th>Session Id *</th>
 				<th>Client Cookie</th>
-				<th>Request Cookie</th>
+				<th>Request Cookie *</th>
+				<th>系统时钟差（分钟） *</th>
 			</tr>
 		</table>
 	</div>
@@ -200,28 +211,30 @@ li {
 		<label>检测总次数：</label><span id="count"></span> <label
 			style="margin-left: 30px">最后检测时间：</label><span id="lasttime"></span>
 	</div>
-	<div style="font-size: 0.8em;">* 注：服务节点、会话内容验证、Session Id
-		内容无变化时不再重复显示。</div>
+	<div style="font-size: 0.8em;">* 注：服务节点、会话内容验证、Session Id、Request
+		Cookie 内容无变化且系统时钟差不超过5分钟时不再重复显示。系统时钟差，是指客户端系统时间与服务端系统时间之差</div>
 	<script src="jquery.min.js"></script>
 	<script type="text/javascript">
-		function log(time, server, sessionStr, validateStr) {
+		function log(time, server, sessionStr, validateStr, requestCookieStr,
+				timeDiff) {
 			var newRow = "<tr><td>" + count + "</td><td>" + time + "</td><td>"
 					+ server + "</td><td>" + validateStr + "</td><td>"
 					+ sessionStr + "</td><td>" + document.cookie + "</td><td>"
-					+ requestCookie + "</td></tr>";
+					+ requestCookieStr + "</td><td>" + timeDiff + "</td></tr>";
 			$("#logTable tr:last").after(newRow);
 			$('html, body').animate({
 				scrollTop : $(document).height()
 			}, 'slow');
 		}
-		function getTimeStr() {
-			var now = new Date();
-			return now.getHours() + ":" + now.getMinutes() + ":"
-					+ now.getSeconds() + "," + now.getMilliseconds();
+		function getTimeStr(dTime) {
+			return dTime.getHours() + ":" + dTime.getMinutes() + ":"
+					+ dTime.getSeconds() + "," + dTime.getMilliseconds();
 		}
 		function getServerInfo() {
+			var startTime = new Date().getTime();
 			$.get("?random=" + random + "&time=" + stime, function(data) {
-				var time = getTimeStr();
+				var now = new Date();
+				var time = getTimeStr(now);
 				count++;
 				$("#count").html(count);
 				$("#lasttime").html(time);
@@ -231,7 +244,22 @@ li {
 				var newSessionId = data.sessionId;
 				random = data.random;
 				stime = data.time;
-				requestCookie = data.requestCookie;
+				var newRequestCookie = data.requestCookie;
+				var timeDiff = (now.getTime() - startTime) / 2 + startTime
+						- stime;
+				// console.log("timeDiff: " + timeDiff + " ms");
+				timeDiff = Math.round(timeDiff / 60000);
+				if (timeDiff > 5 || timeDiff < -5) {
+					changed = true;
+					timeDiff = "<span style=\"color: red\">" + timeDiff
+							+ "</span>";
+				}
+				if (requestCookie != newRequestCookie) {
+					changed = true;
+					requestCookie = newRequestCookie;
+					newRequestCookie = "<span style=\"color: red\">"
+							+ requestCookie + "</span>";
+				}
 				if (server != newServer) {
 					changed = true;
 					server = newServer;
@@ -249,21 +277,21 @@ li {
 					validStr += "<li style=\"color: green\">简单对象验证成功</li>";
 				} else if (data.validate1 == false) {
 					validStr += "<li style=\"color: red\">简单对象验证失败</li>";
-					changed = true;
+					//changed = true;
 				}
 				if (data.validate3 < 0) {
 					validStr += "<li style=\"color: green\">序列化对象验证成功</li>";
 				} else {
 					validStr += "<li style=\"color: red\">序列化对象验证失败 ["
 							+ data.validate3 + "]</li>";
-					changed = true;
+					//changed = true;
 				}
 				if (data.validate2 < 0) {
 					validStr += "<li style=\"color: green\">非序列化对象验证成功</li>";
 				} else {
 					validStr += "<li style=\"color: red\">非序列化对象验证失败 ["
 							+ data.validate2 + "]</li>";
-					changed = true;
+					//changed = true;
 				}
 				validStr += "</ul>";
 				if (validateMsg != validStr) {
@@ -271,7 +299,8 @@ li {
 					validateMsg = validStr
 				}
 				if (changed)
-					log(time, newServer, newSessionId, validStr);
+					log(time, newServer, newSessionId, validStr,
+							newRequestCookie, timeDiff);
 			});
 		}
 		function checkLoopbox() {
@@ -286,11 +315,13 @@ li {
 				}
 			}
 		}
-		$(document).ready(function() {
-			log(getTimeStr(), server, sessionId, validateMsg);
-			$("#loopbox").click(checkLoopbox);
-			checkLoopbox();
-		});
+		$(document).ready(
+				function() {
+					log(getTimeStr(new Date()), server, sessionId, validateMsg,
+							requestCookie, "");
+					$("#loopbox").click(checkLoopbox);
+					checkLoopbox();
+				});
 	</script>
 </body>
 </html>
