@@ -60,7 +60,6 @@
 			if (add != null) {
 				try {
 					URL url = new URL("http://" + add + request.getRequestURI() + "?action=time");
-					System.out.println(url);
 					long startTime = System.currentTimeMillis();
 					HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 					long endTime = System.currentTimeMillis();

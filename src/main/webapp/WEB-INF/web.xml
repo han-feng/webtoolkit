@@ -5,8 +5,8 @@
 
 	<display-name>Web Toolkit Demo</display-name>
 
-	<!-- FilterChain探测器 -->
 	<filter>
+		<description>过滤器链探查工具</description>
 		<filter-name>chainDetectorFilter</filter-name>
 		<filter-class>org.xcom.web.filters.ChainDetectorFilter</filter-class>
 	</filter>
