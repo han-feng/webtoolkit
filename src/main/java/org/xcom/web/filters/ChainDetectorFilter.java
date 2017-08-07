@@ -38,13 +38,13 @@ public class ChainDetectorFilter implements Filter {
 		try {
 			filterChainClass = getClass().getClassLoader().loadClass(CATALINA_CHAIN_CLASS);
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			// e.printStackTrace();
 		}
 		if (filterChainClass == null) {
 			try {
 				filterChainClass = getClass().getClassLoader().loadClass(TONGWEB_CHAIN_CLASS);
 			} catch (ClassNotFoundException e) {
-				e.printStackTrace();
+				// e.printStackTrace();
 			}
 		}
 		if (filterChainClass != null) {
