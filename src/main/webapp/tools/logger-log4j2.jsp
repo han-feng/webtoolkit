@@ -46,6 +46,7 @@
 	<tr>
 		<th>name</th>
 		<th>class</th>
+		<th>layout</th>
 	</tr>
 	<%
 	    for (Appender appender : ctx.getConfiguration().getAppenders()
@@ -54,6 +55,7 @@
 	<tr>
 		<td><%=appender.getName()%></td>
 		<td><%=appender.getClass().getName()%></td>
+		<td><%=appender.getLayout().getContentFormat()%></td>
 	</tr>
 	<%
 	    }
