@@ -61,6 +61,21 @@ th.caption {
 			<td><%=application.getRealPath("/")%></td>
 		</tr>
 		<tr>
+			<th class="caption" colspan="2">Real Path Test</th>
+		</tr>
+		<tr>
+			<th>WebToolkit Real Path:</th>
+			<td><%=application.getRealPath("/tools")%></td>
+		</tr>
+		<tr>
+			<th>空目录 Real Path 测试:</th>
+			<td><%=application.getRealPath("/empty")%></td>
+		</tr>
+		<tr>
+			<th>不存在路径的 Real Path 测试:</th>
+			<td><%=application.getRealPath("/notexist")%></td>
+		</tr>
+		<tr>
 			<th class="caption" colspan="2">Java</th>
 		</tr>
 		<tr>

@@ -150,6 +150,7 @@
 				<artifactId>maven-war-plugin</artifactId>
 				<version>2.6</version>
 				<configuration>
+					<includeEmptyDirectories>true</includeEmptyDirectories>
 					<dependentWarExcludes>WEB-INF/**/*</dependentWarExcludes>
 					<webResources>
 						<resource>
