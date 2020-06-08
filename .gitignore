@@ -1,16 +1,27 @@
-# Maven
+#
+node_modules/
 target/
+logs/
+dist/
 
-# Eclipse
-.classpath
-.project
+.svn/
+.idea/
+.vscode/
 .settings/
 .externalToolBuilders/
 
-# IDEA
+.DS_Store
+.classpath
+.project
+.factorypath
+.env.local
+.env.*.local
+
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw*
 *.idea
 *.iml
-
-# log
 *.log
-*.log.*
